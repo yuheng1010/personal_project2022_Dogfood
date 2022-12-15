@@ -1,0 +1,44 @@
+@import url(//db.onlinewebfonts.com/c/3033ee1d3b6ca00d2765082ade4fed4f?family=Denk+One);
+.BigSection{
+    background-color: rgb(111, 168, 152);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position:relative;
+}
+.login{
+    font-family: 'Denk One', woff2;
+    position: absolute;
+    top: 29px;
+    right: 20px;
+    color:white;
+    z-index: 10;
+}
+.login:hover{
+    color:darkslategrey;
+    font-size: large;
+}
+.foot{
+    position: absolute;
+    bottom:12px;
+    right: 9px;
+    z-index: 1;
+}
+.webIcon{
+    margin-left: 17px;
+    margin-top: 3px;
+    height: 66px;
+    width: 65px;
+}
+.webname{
+    margin-top: 10px;
+    height: 55px;
+    width:150px;
+    margin-left: -7px;
+}
+.line{
+    height: 7px;
+    background-color: rgb(184, 197, 193);
+    margin-bottom: 20px;
+}
