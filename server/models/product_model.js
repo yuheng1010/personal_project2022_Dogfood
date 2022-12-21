@@ -11,11 +11,27 @@ const getProductDetail = async(id) => {
     return results[0]
 }
 
-const selector = async(con) => {
-    const element = con.split('-');
+const selector = async(constraint) => {
+    const element = constraint.split(' ');
+    let query = "SELECT * FROM allfoods2 WHERE tags LIKE ? ";
+    for(var i=0;i<element.length-1;i++){
+        query += "OR tags LIKE ?"
+    }   
+    let temp=[]
+    for(var i=0; i<element.length;i++){
+        temp.push(`%${element[i]}%`)
+    }
+    const [results] = await pool.query(query,temp)
+    return results;
 }
-module.exports = {
+
+const getProductComments = async (productId) => {
+    const [result] = await pool.query('SELECT * FROM comments  WHERE pId=?',parseInt(productId));
+    return result;
+}
+    module.exports = {
     getProducts,
     getProductDetail,
-    selector
+    selector,
+    getProductComments
 }

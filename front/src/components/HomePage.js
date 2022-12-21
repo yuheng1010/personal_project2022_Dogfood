@@ -21,9 +21,9 @@ function HomePage() {
             <Row>
             {foods.map((inner, index) =>
                 <Col xs={6} lg={6} md={6} xl={3} d-block="true" >
-                    <Link to={`/detail/${inner.id}`}><img id="p1" className="img-fluid img-thumbnail rounded" src={Object.values(JSON.parse(inner.img))} /></Link>
+                    <Link to={`/detail/${inner.id}`}><img id="p1" className="img-fluid img-thumbnail rounded" src={Object.values(JSON.parse(inner.img))[0]} /></Link>
                     <div className="des">
-                        <font size="2" className="name">名稱 :</font>
+                        <font size="2" className="name">名稱 : </font>
                         <font size="2.5">{inner.name}</font>
                         <br />
                         <font size="2" className="brand" style={{color:"gray"}}>廠牌 : </font>

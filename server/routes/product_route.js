@@ -3,7 +3,8 @@ const router = require('express').Router();
 const {
     getProducts,
     getProductDetail,
-    selector
+    selector,
+    getProductComments
 } = require('../controllers/product_controller');
 
 router.route('/allfoods')
@@ -12,7 +13,10 @@ router.route('/allfoods')
 router.route('/detail')
     .get(getProductDetail);
 
-router.route('./selector')
+router.route('/selector')
     .get(selector)
+
+router.route('/productComment')
+    .get(getProductComments)
 
 module.exports = router;

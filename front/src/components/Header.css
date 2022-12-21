@@ -1,4 +1,7 @@
 @import url(//db.onlinewebfonts.com/c/3033ee1d3b6ca00d2765082ade4fed4f?family=Denk+One);
+*{
+    font-family: 'Denk One', woff2;
+}
 .BigSection{
     background-color: rgb(111, 168, 152);
     height: 80px;
@@ -16,6 +19,19 @@
     z-index: 10;
 }
 .login:hover{
+    color:darkslategrey;
+    font-size: large;
+}
+.logOut{
+    font-family: 'Denk One', woff2;
+    position: absolute;
+    top: 29px;
+    right: 20px;
+    color:white;
+    z-index: 10;
+    text-decoration: none;
+}
+.logOut:hover{
     color:darkslategrey;
     font-size: large;
 }
@@ -37,8 +53,285 @@
     width:150px;
     margin-left: -7px;
 }
-.line{
+.line1{
     height: 7px;
     background-color: rgb(184, 197, 193);
-    margin-bottom: 20px;
+
+}
+/* .filterSection{
+position: absolute;
+top:-40%;
+height: 200px;
+width: 100%; */
+/* background-color: rgb(191, 227, 214); */
+/* background-color: rgb(184, 197, 193);
+opacity: 0.8;
+   
+} */
+#filter{
+    position: absolute;
+    width:23px;
+    height: 28px;
+    right: 6%;
+    z-index: 3;
+}
+
+#filter:hover{
+    width:25px;
+    height: 31px;
+}
+/* #filter:focus ~ .filterSection{
+position: relative;
+height: 200px;
+width: 100%;
+bottom: 20; */
+/* background-color: rgb(191, 227, 214); */
+/* background-color: rgb(35, 155, 119);
+opacity: 0.8; */
+/* transform: translateY(100); */
+/* transition:  bottom 0.5s;
+z-index: 1;
+transform: rotate(45deg);
+}
+.filterSection{
+    width:100%;
+    height: 200px;
+    background:  rgb(184, 197, 193);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    position: fixed;
+    z-index: 1;
+    transition: all .6s;
+    overflow: hidden;
+    
+} */
+.line {
+    width: 24px;
+    height: 24px;
+    /* background: rgb(171, 192, 175); */
+    cursor: pointer;
+    display: block;
+    padding: 16px;
+    top:15px;
+    right: 7%;
+    position: absolute;
+    z-index: 2;
+}
+.line .menu,
+.line .menu::before,
+.line .menu::after {
+    background: rgb(255, 255, 255);
+    content: '';
+    display: block;
+    height: 1.5px;
+    position: absolute;
+    transition: background ease .3s, top ease .3s .3s, transform ease .3s;
+    width: 20px;
+}
+.line .menu {
+    left: 18px;
+    top: 27px;
+}
+
+.line .menu::before {
+    top: -6px;
+}
+
+.line .menu::after {
+    top: 6px;
+}
+/*
+點選選單變叉叉
+*/
+#menu:checked + .line .menu {
+    background: transparent;
+}
+
+#menu:checked + .line .menu::before {
+    transform: rotate(45deg);
+}
+
+#menu:checked + .line .menu::after {
+    transform: rotate(-45deg);
+}
+
+#menu:checked + .line .menu::before,
+#menu:checked + .line .menu::after {
+    top: 0;
+    transition: top ease .3s, transform ease .3s .3s;
+}
+
+/*
+選單開合
+*/
+#menu:checked ~ .menu-list {
+    margin-top: 281px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 180px;
+    z-index: 0;
+}
+/* #menu:checked .container{
+    margin-top: 300px;
+} */
+.menu-list {
+    width: 100%;
+    height: 0px;
+    background: rgb(111, 168, 152);
+    /* opacity: 0.8; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    position: absolute;
+    z-index: -1;
+    transition: all .6s;
+    overflow: hidden;
+    padding-top: 20px;
+}
+/*
+選單向外推
+*/
+.menu-list ul {
+    list-style: none;
+    display: inline-flex;
+    flex-direction: row;
+}
+.menu-list ul>li{
+    display:inline;
+    width:100%;
+    padding:10px;
+}
+/*
+隱藏核許框
+*/
+input#menu {
+ display: none;
+}
+
+
+.filterOption {
+    border: 1px solid #d1fdf3;
+    width: 120px;
+    height: 120px;
+    position: relative;
+    box-shadow: 0 0 1px 1px#ddf0dd inset;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* margin: auto; */
+    /* padding: 35px; */
+}
+
+.filterOption::before {
+    background: rgb(111, 168, 152);
+    color: #ffffff;
+    content: "Age";
+    /*標題*/
+    /* font-weight: bold; */
+    font-size: 13px;
+    left: 1em;
+    padding: 0 .5em;
+    position: absolute;
+    top: -0.8em;
+}
+
+.filterOption2 {
+    border: 1px solid #d1fdf3;
+    width: 200px;
+    height: 120px;
+    position: relative;
+    box-shadow: 0 0 1px 1px#ddf0dd inset;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    /* margin: auto; */
+    padding: 0px;
+}
+
+.filterOption2::before {
+    background: rgb(111, 168, 152);
+    color: #ffffff;
+    content: "Flavor";
+    /*標題*/
+    /* font-weight: bold; */
+    font-size: 12px;
+    left: 1em;
+    padding: 0 .5em;
+    position: absolute;
+    top: -0.8em;
+}
+
+.filterOption3 {
+    border: 1px solid #d1fdf3;
+    width: 300px;
+    height: 120px;
+    position: relative;
+    box-shadow: 0 0 1px 1px#ddf0dd inset;
+    border-radius: 6px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: row;
+    /* margin: auto; */
+    padding: 30px;
+}
+
+.filterOption3::before {
+    background: rgb(111, 168, 152);
+    color: #ffffff;
+    content: "Requirement";
+    /*標題*/
+    /* font-weight: bold; */
+    font-size: 12px;
+    left: 1em;
+    padding: 0 .5em;
+    position: absolute;
+    top: -0.8em;
+}
+
+.selectBtn{
+    width: 45px;
+    height: 23px;
+    background-color: rgb(181, 211, 204);
+    border-radius: 7px;
+    font-size: 12px;
+    color: rgb(22, 25, 28);
+    font-weight: bold;
+    border: none;
+    padding-inline: 10px;
+    margin: 3px;
+}
+
+.Option2_1 button{
+    margin-right: 0;
+    width: 45px;
+    height: 23px;
+    margin-left: 0%;
+    margin: 5px;
+}
+/* .Option2_2 {
+    display: flex;
+    flex-direction: column;
+} */
+.Option2_2 button{
+    margin-right: 0;
+    width: 50px;
+    height: 23px;
+    margin-left: 0%;
+    margin: 5px;
+}
+
+.Option2_3 button{
+    margin-right: 0;
+    width: 70px;
+    height: 23px;
+    margin-left: 0%;
+    margin: 5px;
+}
+
+li #filter{
+    top:68%;
+    right: 20%;
 }

@@ -19,12 +19,24 @@ const getProductDetail = async (req,res) => {
 }
 
 const selector = async (req,res) => {
-    const con = req.query.con;
-    const results = Product.selector(con)
+    const constraint = req.query.constraint;
+    const results = await Product.selector(constraint)
+    if (!results) {
+        res.status(400).send({error:'Wrong'});
+        return;
+    }
+    res.status(200).json(results);
 }
 
+const getProductComments = async (req,res) =>{
+    const result = await Product.getProductComments(req.query.Id);
+    res.status(200).send({
+        result:result
+    })
+}
 module.exports = {
     getProducts,
     getProductDetail,
-    selector
+    selector,
+    getProductComments
 }

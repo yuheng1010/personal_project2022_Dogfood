@@ -3,6 +3,7 @@
     margin-top: 100px;
     display: flex;
     justify-content: center;
+    z-index: 0;
 }
 .img-fluid{
     margin-top: 15px;
@@ -22,6 +23,35 @@
 }
 .brand{
     margin-top: 3px;
+}
+.tagsG{
+    width: 42px;
+    height: 30px;
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    margin-right: 5px;
+}
+.tagsSection{
+    display: flex;
+    flex-direction: row;
+}
+#tagPho{
+    position: absolute;
+    width: 42px;
+    height: 25px;
+    z-index: 1;
+   
+}
+#tagF{
+    position: relative;
+    width: 100%;
+    font-size: 8px;
+    margin-top:2px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    z-index: 2;
+    left: 10%;
 }
 
 

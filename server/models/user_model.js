@@ -38,13 +38,30 @@ const signIn = async(email,password) =>{
                 dogVar:res[0].dogVar,
                 dogAge:res[0].dogAge,
             };
-            const token = jwt.sign(payload, process.env.secretJWT, { expiresIn: 86400 });
+            const token = jwt.sign(payload, process.env.JWT, { expiresIn: 86400 });
             return ({ message: "LOGIN_SUCCESSFULLY", token });
         }
     }
 }
+const getUserDetail = async (email) => {
+    try {
+        const [users] = await pool.query('SELECT * FROM user WHERE email = ?', email);
+        return users[0];
+    } catch (e) {
+        return null;
+    }
+};
 
+const addComment = async (userId,email,grade,content,pId,dogVar) => {
+    try{
+        await pool.query('INSERT INTO comments(userId,userEmail,grade,`text`,pId,dogVar) VALUES (?,?,?,?,?,?)',[userId,email,parseInt(grade),content,parseInt(pId),dogVar]);
+    }catch(e){
+        console.log(e)
+    }
+}
 module.exports = {
     signUp,
-    signIn
+    signIn,
+    getUserDetail,
+    addComment
 };
