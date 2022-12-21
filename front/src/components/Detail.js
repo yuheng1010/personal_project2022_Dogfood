@@ -15,13 +15,13 @@ function Detail() {
   const [comments,setComments] = React.useState([]);
   const [commentGrade,setCommentGrade]=React.useState([])
     useEffect(() => {
-        fetch(`http://localhost:7000/api/v1/detail?id=${id}`)
+        fetch(`http://52.8.249.71:7000/api/v1/detail?id=${id}`)
             .then(res => res.json())
             .then(data => {
                 setData(data)
             })
 
-            fetch(`http://localhost:7000/api/v1/productComment?Id=${id}`)
+            fetch(`http://52.8.249.71:7000/api/v1/productComment?Id=${id}`)
             .then(res => res.json())
             .then(data => {
               setComments(data.result)
@@ -162,7 +162,7 @@ function Detail() {
         if (!content || grade === 0) {
           alert('請填寫完整評論')
         } else {
-            fetch('http://localhost:7000/api/v1/addComment',{
+            fetch('http://52.8.249.71:7000/api/v1/addComment',{
                 body: JSON.stringify({grade:grade,content:content,pId:id}),
                 headers: new Headers({
                   'Content-Type': 'application/json',

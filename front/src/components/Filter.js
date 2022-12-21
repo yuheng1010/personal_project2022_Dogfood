@@ -13,7 +13,7 @@ function Filter() {
     const [arr, setArr] = useState([])
   
     useEffect(() => {
-        fetch(`http://localhost:7000/api/v1/selector?constraint=${constraint}`)
+        fetch(`http://52.8.249.71:7000/api/v1/selector?constraint=${constraint}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
