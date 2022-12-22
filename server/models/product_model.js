@@ -15,7 +15,7 @@ const selector = async(constraint) => {
     const element = constraint.split(' ');
     let query = "SELECT * FROM allfoods2 WHERE tags LIKE ? ";
     for(var i=0;i<element.length-1;i++){
-        query += "AND tags LIKE ?"
+        query += "OR tags LIKE ?"
     }   
     let temp=[]
     for(var i=0; i<element.length;i++){

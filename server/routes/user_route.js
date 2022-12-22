@@ -8,7 +8,10 @@ const {
     signIn,
     authJWT,
     getUserDetail,
-    addComment
+    addComment,
+    getPersonCollection,
+    addCollection,
+    deleteCollection
 } = require('../controllers/user_controller');
 
 router.route('/signUp')
@@ -25,5 +28,14 @@ router.route('/userDetail')
 
 router.route('/addComment')
     .post(authentication(), wrapAsync(addComment));
+
+router.route('/getPersonCollection')
+    .post(authentication(), wrapAsync(getPersonCollection));
+
+router.route('/addCollection')
+    .post(authentication(), wrapAsync(addCollection));
+
+router.route('/deleteCollection')
+    .post(authentication(), wrapAsync(deleteCollection));
 
 module.exports = router;

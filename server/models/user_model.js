@@ -59,9 +59,27 @@ const addComment = async (userId,email,grade,content,pId,dogVar) => {
         console.log(e)
     }
 }
+
+const getPersonCollection = async (userId) => {
+    const [result] = await pool.query('SELECT * FROM collection WHERE userId = ?', userId);
+    return result;
+}
+
+const addCollection = async (userId, pId) => {
+    const [result] = await pool.query( 'INSERT INTO collection(userId, pId) VALUES (?, ?)', [userId,pId]);
+    return result;
+}
+
+const deleteCollection = async (userId, pId) => {
+    const [result] = await pool.query('DELETE FROM collection WHERE userId = ? AND pId = ?', [userId,pId]);
+    return result;
+}
 module.exports = {
     signUp,
     signIn,
     getUserDetail,
-    addComment
+    addComment,
+    getPersonCollection,
+    addCollection,
+    deleteCollection
 };

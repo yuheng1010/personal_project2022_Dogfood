@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Login.css'
 
 function signUp(){
+    
     const userName = document.getElementById('userName').value
     const ac = document.getElementById('emailSU').value
     const pa = document.getElementById('passwordSU').value
@@ -18,7 +19,7 @@ function signUp(){
     console.log(dogAge)
     console.log(dogVar)
     var header = { 'Content-Type': 'application/json; charset=UTF-8' };
-    fetch('http://52.8.249.71:7000/api/v1/signUp', {
+    fetch('http://localhost:7000/api/v1/signUp', {
                 method: 'POST',
                 headers: header,
                 body: JSON.stringify({ 'userName':userName,'email': ac, 'password':pa,'phone':phone,'dogName':dogName,'dogAge':dogAge,'dogVar':dogVar})
@@ -39,7 +40,7 @@ function signIn(){
     console.log(ac)
     console.log(pa)
     var header = { 'Content-Type': 'application/json; charset=UTF-8' };
-    fetch('http://52.8.249.71:7000/api/v1/signIn', {
+    fetch('http://localhost:7000/api/v1/signIn', {
                     method: 'POST',
                     headers: header,
                     body: JSON.stringify({ 'email': ac, 'password':pa})
@@ -50,7 +51,7 @@ function signIn(){
                         console.log(result);
                         localStorage.setItem('token',result.token) 
                         alert(result.message)
-                        window.location.assign("http://52.8.249.71:4000")
+                        window.location.assign("http://localhost:4000")
                     });
 }
 
@@ -58,6 +59,7 @@ function signIn(){
 
 function Login() {
     useEffect(() => {
+        document.getElementById("notFound").style.display="none";
         console.clear();
         const loginBtn = document.getElementById('login');
         const signupBtn = document.getElementById('signup');
@@ -89,7 +91,7 @@ function Login() {
     useEffect(()=>{
     //     if(localStorage.getItem('token')!==null && localStorage.getItem('token')!=='undefined'){
     //         alert('已登入狀態!')
-    //         window.location.assign('http://52.8.249.71:4000')
+    //         window.location.assign('http://localhost:4000')
     //     }
     },[])
     return (

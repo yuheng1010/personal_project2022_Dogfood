@@ -50,10 +50,40 @@ const addComment = async(req,res) =>{
     return await User.addComment(req.user.id,email,grade,content,pId,dogVar);
 }
 
+const getPersonCollection = async (req, res) => {
+    if(req.user.id !== undefined) {
+        const collections = await User.getPersonCollection(req.user.id);
+        res.status(200).send(collections);
+    }else {
+        res.status(400).send({error:'Wrong Request'});
+    }
+}
+
+const addCollection = async (req, res) => {
+    if(req.user.id && req.body.pId) {
+        const collections = await User.addCollection(req.user.id, req.body.pId);
+        res.status(200).json(collections);
+    }else {
+        res.status(400).send({error:'Wrong Request'});
+    }
+}
+
+const deleteCollection = async (req, res) => {
+    if(req.user.id && req.body.pId) {
+        const collections = await User.deleteCollection(req.user.id, req.body.pId);
+        res.status(200).json(collections);
+    }else {
+        res.status(400).send({error:'Wrong Request'});
+    }
+}
+
 module.exports = {
     signUp,
     signIn,
     authJWT,
     getUserDetail,
-    addComment
+    addComment,
+    getPersonCollection,
+    addCollection,
+    deleteCollection
 };

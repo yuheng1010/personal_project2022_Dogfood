@@ -48,7 +48,7 @@ img.pics {
     font-family: 'Denk One', woff2;
 
 }
-.commentArea {
+/* .commentArea {
     border: 1px solid #979797;
     width: 57%;
     position: relative;
@@ -66,13 +66,13 @@ img.pics {
     color: #000000;
     content: "評論區";
     /*標題*/
-    font-weight: bold;
+    /* font-weight: bold;
     font-size: 15px;
     left: 1em;
     padding: 0 .5em;
     position: absolute;
     top: -1em;
-}
+}  */
 .brandUrl {
     font-family: 'Denk One', woff2;
     color: rgb(87, 131, 119);
@@ -264,7 +264,8 @@ img.pics {
     display: flex;
     justify-content:space-evenly;
     flex-direction: column;
-    margin: 140px auto 0;
+    margin: auto ;
+    margin-top: 80px;
     /* padding: 65px 0 164px; */
     padding: 30px;
     
@@ -286,7 +287,8 @@ img.pics {
     flex-direction: row;
     justify-content: flex-start;
     text-align: start;
-    width:80%
+    width:80%;
+    font-size: 13px;
    
   }
   .comment:not(:last-child){
@@ -294,15 +296,14 @@ img.pics {
   }
   .profileback{
     margin-right: 10px;
-    margin-top: 7px;
     width:80px;
     height:80px;
-    background-color: darkcyan;
+    background-color:  rgb(87, 131, 119);
     border-radius: 5px;
   }
   .commentPic{
     padding-left: 8px;
-    margin-top: 14px;
+    margin-top: 8px;
     width:72px;
     height: 70px;
   }
@@ -326,5 +327,13 @@ img.pics {
     font-size: 10px;
   }
 
-  
+  .gomy{
+    position: absolute;
+    right: 30px;
+    padding-top: 2px;
+  }
+
+  #heart{
+    color: rgb(172, 250, 248);
+  }
 @media (max-width: 1280px) {}

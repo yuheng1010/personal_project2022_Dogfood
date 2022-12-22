@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     position:relative;
+    z-index: 15;
 }
 .login{
     font-family: 'Denk One', woff2;
@@ -39,24 +40,34 @@
     position: absolute;
     bottom:12px;
     right: 9px;
-    z-index: 1;
+    z-index: 9;
 }
 .webIcon{
     margin-left: 17px;
     margin-top: 3px;
     height: 66px;
     width: 65px;
+    z-index: 14;
 }
 .webname{
     margin-top: 10px;
     height: 55px;
     width:150px;
     margin-left: -7px;
+    z-index:14;
 }
 .line1{
     height: 7px;
     background-color: rgb(184, 197, 193);
+    z-index: 9;
+}
 
+#topFilter{
+    position:  absolute;
+    right:77px;
+    top:45%;
+    color: #d1fdf3;
+    z-index: 9;
 }
 /* .filterSection{
 position: absolute;
@@ -72,8 +83,11 @@ opacity: 0.8;
     position: absolute;
     width:23px;
     height: 28px;
-    right: 6%;
-    z-index: 3;
+    right:5%;
+    z-index:6;
+    margin-top:7px;
+    font-size: 12px;
+    color: rgb(184, 232, 226);
 }
 
 #filter:hover{
@@ -114,12 +128,12 @@ transform: rotate(45deg);
     top:15px;
     right: 7%;
     position: absolute;
-    z-index: 2;
+    z-index:10;
 }
 .line .menu,
 .line .menu::before,
 .line .menu::after {
-    background: rgb(255, 255, 255);
+    background:none;
     content: '';
     display: block;
     height: 1.5px;
@@ -168,7 +182,7 @@ transform: rotate(45deg);
     margin-bottom: 10px;
     width: 100%;
     height: 180px;
-    z-index: 0;
+    z-index: 6;
 }
 /* #menu:checked .container{
     margin-top: 300px;
@@ -178,9 +192,9 @@ transform: rotate(45deg);
     height: 0px;
     background: rgb(111, 168, 152);
     /* opacity: 0.8; */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, .1); */
     position: absolute;
-    z-index: -1;
+    z-index:-1;
     transition: all .6s;
     overflow: hidden;
     padding-top: 20px;

@@ -5,14 +5,14 @@ import webname from "../imgs/webname.png"
 import filter from "../imgs/filter.png"
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
-
+import notfound from "../imgs/dogNotFound.png";
 
 function Header() {
     let token = ''
     if (localStorage.getItem('token')) {
         token = localStorage.getItem('token')
     }
-    let selectorArr=[]
+
     const [arr,setArr] = useState([])
     const [url,setUrl] = useState('')
     
@@ -53,12 +53,20 @@ function Header() {
         setUrl(selectorStr)
 
     }
+    function clickSearch(){
+        if(url.length === 0){
+            document.getElementById("notFound").style.display="block";
+        }else{
+            document.getElementById("notFound").style.display="none";
+        }
+    }
     console.log(url)
     return (
         <nav className="nav-box">
             <div className="BigSection">
-                <Link to="/"><img src={icon} className="webIcon" /><img src={webname} className="webname" /></Link>
+                <Link to="/" onClick={window.location.reload}><img src={icon} className="webIcon" /><img src={webname} className="webname" /></Link>
                 {/* <img src={filter} id="filter" tabindex="0" /> */}
+                <i className="fa-solid fa-filter fa-lg" id="topFilter" aria-hidden="true"></i>
                 <Link to="/login"><div className="login">Login</div></Link>
                 <a href="#" className="logOut" style={{ display: "none" }} onClick={logOut}>LogOut</a>
                 <Link to="/login"><img src={foot} className="foot" style={{ width: "22px", height: "22px" }}></img></Link>
@@ -99,12 +107,12 @@ function Header() {
                             <button className="selectBtn" id="骨" onClick={()=>selector("骨")}>骨頭關節</button>
                             <button className="selectBtn" id="皮膚" onClick={()=>selector("皮膚")}>皮毛保養</button></div>
                         </div></li>
-                        <Link to={`/filter/${url}`}><li><img src={filter} id="filter" tabindex="0" /></li></Link>
+                        <Link to={`/filter/${url}`}><li><div id="filter" onClick={clickSearch}>Search</div></li></Link>
                     </ul>
                 </div>
             </div>
             <div className="line1"></div>
-
+            <div className="notFound" id="notFound" style={{ display: "none" }}> <br/> <br/>Not Found ! <br/><img src={notfound}></img></div>
         </nav>
     )
 }

@@ -12,6 +12,7 @@ import afoot from "./imgs/afoot.png"
 function App() {
   const [data,setData] = useState([])
   useEffect(() => {
+    document.getElementById("notFound").style.display="none";
     if (localStorage.getItem('token') !== null && localStorage.getItem('token') !== 'undefined') {
       document.querySelector(".profile").style.display = "block";
       fetch("http://localhost:7000/api/v1/userDetail",{
@@ -51,7 +52,7 @@ function App() {
             <font style={{fontWeight:"bold"}}><img className="afoot" src={afoot}/>珍藏</font>
         </div>
       </div></nav>
-
+<div className='footer'></div>
     </div>
   );
 }
