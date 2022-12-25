@@ -18,7 +18,6 @@ app.use('/', express.static('public'));
 app.use('/api/v1/',[require('./server/routes/product_route'),require("./server/routes/user_route")]);
 
 
-
 app.listen(7000, function () {
     console.log('Node app is running on port 7000');
 });
