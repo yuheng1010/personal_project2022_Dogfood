@@ -66,8 +66,14 @@ nav:hover .profileDetail {
   height: 40px;
   width: 100%;
   display: flex;
-  margin-top: 50px;
+  margin-top:30px;
+  margin-bottom: 0px;
   z-index: 15;
+  /* position:absolute;
+  bottom: 0%; */
+}
+#getCollectionFont{
+  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {

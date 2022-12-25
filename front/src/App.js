@@ -8,24 +8,25 @@ import Login from './components/Login';
 import React, { useEffect, useState } from 'react'
 import dogProfile from "./imgs/dogProfile.png"
 import afoot from "./imgs/afoot.png"
+import Collection from './components/Collection';
 
 function App() {
-  const [data,setData] = useState([])
+  const [data, setData] = useState([])
   useEffect(() => {
-    document.getElementById("notFound").style.display="none";
+    document.getElementById("notFound").style.display = "none";
     if (localStorage.getItem('token') !== null && localStorage.getItem('token') !== 'undefined') {
       document.querySelector(".profile").style.display = "block";
-      fetch("http://localhost:7000/api/v1/userDetail",{
+      fetch("http://localhost:7000/api/v1/userDetail", {
         headers: new Headers({
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         }),
         method: 'POST',
       })
-      .then(res => res.json())
-      .then(data => {
+        .then(res => res.json())
+        .then(data => {
           setData(data)
-      })
+        })
     } else {
       document.querySelector(".profile").style.display = "none";
     }
@@ -39,20 +40,22 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/filter/:constraint" element={<Filter />} />
+        <Route path="/collection" element={<Collection />} />
       </Routes>
 
       <nav><div className='profile' style={{ display: "none" }}>
         <img className="dogPho" src={dogProfile} />
         <div className='profileDetail'>
-            <font>User name :{data.userName}</font>
-            <font>Dog name : {data.dogName}</font>
-            <font>Dog breed : {data.dogVar} </font>
-            <font>Dog age : {data.dogAge}</font>
-            <br/>
-            <font style={{fontWeight:"bold"}}><img className="afoot" src={afoot}/>珍藏</font>
+          <font>User name :{data.userName}</font>
+          <font>Dog name : {data.dogName}</font>
+          <font>Dog breed : {data.dogVar} </font>
+          <font>Dog age : {data.dogAge}</font>
+          <br />
+          <Link to="/collection" style={{ textDecoration:"none" , color:"white"}}><img className="afoot" src={afoot} /><font id="getCollectionFont" style={{ fontWeight: "bold"}}>珍藏</font></Link>
         </div>
       </div></nav>
-<div className='footer'></div>
+      <div className='footer'></div>
+
     </div>
   );
 }

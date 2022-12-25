@@ -11,7 +11,8 @@ const {
     addComment,
     getPersonCollection,
     addCollection,
-    deleteCollection
+    deleteCollection,
+    ifProductCollection
 } = require('../controllers/user_controller');
 
 router.route('/signUp')
@@ -37,5 +38,9 @@ router.route('/addCollection')
 
 router.route('/deleteCollection')
     .post(authentication(), wrapAsync(deleteCollection));
+
+router.route('/ifProductCollection')
+    .post(authentication(), wrapAsync(ifProductCollection));
+
 
 module.exports = router;

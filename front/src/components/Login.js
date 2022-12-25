@@ -11,13 +11,6 @@ function signUp(){
     const dogVar = document.getElementById('dogVar').value
     const dogAge = document.getElementById('dogAge').value
 
-    console.log(userName)
-    console.log(ac)
-    console.log(pa)
-    console.log(phone)
-    console.log(dogName)
-    console.log(dogAge)
-    console.log(dogVar)
     var header = { 'Content-Type': 'application/json; charset=UTF-8' };
     fetch('http://localhost:7000/api/v1/signUp', {
                 method: 'POST',
@@ -51,7 +44,7 @@ function signIn(){
                         console.log(result);
                         localStorage.setItem('token',result.token) 
                         alert(result.message)
-                        window.location.assign("http://localhost:4000")
+                        window.location.assign("http://localhost:3000")
                     });
 }
 

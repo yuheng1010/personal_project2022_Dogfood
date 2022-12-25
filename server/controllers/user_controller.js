@@ -62,7 +62,7 @@ const getPersonCollection = async (req, res) => {
 const addCollection = async (req, res) => {
     if(req.user.id && req.body.pId) {
         const collections = await User.addCollection(req.user.id, req.body.pId);
-        res.status(200).json(collections);
+       return collections;
     }else {
         res.status(400).send({error:'Wrong Request'});
     }
@@ -71,6 +71,15 @@ const addCollection = async (req, res) => {
 const deleteCollection = async (req, res) => {
     if(req.user.id && req.body.pId) {
         const collections = await User.deleteCollection(req.user.id, req.body.pId);
+        return (collections);
+    }else {
+        res.status(400).send({error:'Wrong Request'});
+    }
+}
+
+const ifProductCollection = async (req,res) => {
+    if(req.user.id && req.body.pId) {
+        const collections = await User.ifProductCollection(req.user.id, req.body.pId);
         res.status(200).json(collections);
     }else {
         res.status(400).send({error:'Wrong Request'});
@@ -85,5 +94,6 @@ module.exports = {
     addComment,
     getPersonCollection,
     addCollection,
-    deleteCollection
+    deleteCollection,
+    ifProductCollection
 };

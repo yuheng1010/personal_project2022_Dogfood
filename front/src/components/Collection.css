@@ -1,0 +1,25 @@
+.collectionSection{
+    margin-bottom: 50px;
+    margin-right: 50px;
+}
+
+.collectionPage{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.myCollections{
+    width: 15%;
+    margin-top: 10px;
+    margin-left: 30px;
+    font-size: 20px;
+    height: 405px;
+
+}
+#doging{
+    position:absolute;
+    width: 180px;
+    height: 180px;
+    bottom: -10%;
+}

@@ -14,6 +14,7 @@ function Detail() {
   const [ratingVal, setRatingVal] = React.useState(0);
   const [comments, setComments] = React.useState([]);
   const [commentGrade, setCommentGrade] = React.useState([])
+
   useEffect(() => {
     fetch(`http://localhost:7000/api/v1/detail?id=${id}`)
       .then(res => res.json())
@@ -35,6 +36,34 @@ function Detail() {
         }
         setCommentGrade(grades)
       })
+
+
+    if (window.localStorage.getItem('token') && window.localStorage.getItem('token') != null) {
+      let token = window.localStorage.getItem('token')
+      fetch('http://localhost:7000/api/v1/ifProductCollection', {
+        body: JSON.stringify({ pId: id }),
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }),
+        method: 'POST',
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data === 1) {
+            document.getElementById("showCommentBtn").innerText = "已收藏！"
+            document.getElementById("showCommentBtn").style.background = "rgb(20, 57, 48)"
+          } else {
+            document.getElementById("showCommentBtn").innerHTML = "收藏關注<i className=\"fa-solid fa-heart\" id=\"heart\"></i>"
+            document.getElementById("showCommentBtn").style.background = "rgb(87, 131, 119)"
+
+          }
+
+        })
+
+    }
+
+
   }, [])
 
   function imgs() {
@@ -73,13 +102,13 @@ function Detail() {
         <div>
           {sortUrl.map((inner, index) => {
             if (inner.includes("pchome") === true) {
-              return (<div><img className="afoot" src={afoot} />Pchome : <font  style={{ fontSize: "4px" }}> &ensp;TWD. </font><font>{sortPri[0][index]}</font><a className="brandUrl" href={inner} ><font className="gomy" style={{ fontSize: "3px" }}>GO買</font></a></div>)
+              return (<div><img className="afoot" src={afoot} />Pchome : <font style={{ fontSize: "4px" }}> &ensp;TWD. </font><font>{sortPri[0][index]}</font><a className="brandUrl" href={inner} ><font className="gomy" style={{ fontSize: "3px" }}>GO買</font></a></div>)
             }
             if (inner.includes("maoup") === true) {
               return (<div><img className="afoot" src={afoot} />Mao Up : <font style={{ fontSize: "4px" }}> &ensp;TWD. </font><font>{sortPri[0][index]}</font><a className="brandUrl" href={inner}><font className="gomy" style={{ fontSize: "3px" }}>GO買</font></a></div>)
             }
             if (inner.includes("momo") === true) {
-              return (<div><img className="afoot" src={afoot} />Momo : <font  style={{ fontSize: "4px" }}> &ensp;TWD.</font><font>{sortPri[0][index]}</font><a className="brandUrl" href={inner}><font className="gomy"  style={{ fontSize: "3px" }}>GO買</font></a></div>)
+              return (<div><img className="afoot" src={afoot} />Momo : <font style={{ fontSize: "4px" }}> &ensp;TWD.</font><font>{sortPri[0][index]}</font><a className="brandUrl" href={inner}><font className="gomy" style={{ fontSize: "3px" }}>GO買</font></a></div>)
             }
           }
 
@@ -113,6 +142,7 @@ function Detail() {
     )
   }
   function commentBlock() {
+    if (window.localStorage.getItem('token') && window.localStorage.getItem('token') != null) {
     document.querySelector('#infoModal').showModal();
     const stars = document.querySelector(".rating").children;
     let ratingValue
@@ -144,7 +174,10 @@ function Detail() {
           stars[j].classList.add("fa-solid")
         }
       })
+    }}else{
+      alert("請先登入!")
     }
+
   }
   function close() {
     document.querySelector('#infoModal').close();
@@ -179,6 +212,52 @@ function Detail() {
     if (comments.length === 0) { return '尚無評論' }
   }
 
+  function collection() {
+    //先判斷是不是珍藏了
+    if (window.localStorage.getItem('token') && window.localStorage.getItem('token') != null) {
+      let token = window.localStorage.getItem('token')
+      fetch('http://localhost:7000/api/v1/ifProductCollection', {
+        body: JSON.stringify({ pId: id }),
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }),
+        method: 'POST',
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          if (data === 1) {
+            fetch('http://localhost:7000/api/v1/deleteCollection', {
+              body: JSON.stringify({ pId: id }),
+              headers: new Headers({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              }),
+              method: 'POST',
+            })
+            console.log("del!")
+            document.getElementById("showCommentBtn").innerHTML = "收藏關注<i className=\"fa-solid fa-heart\" id=\"heart\"></i>"
+            document.getElementById("showCommentBtn").style.background = "rgb(87, 131, 119)"
+          } else {
+            fetch('http://localhost:7000/api/v1/addCollection', {
+              body: JSON.stringify({ pId: id }),
+              headers: new Headers({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              }),
+              method: 'POST',
+            })
+            console.log("Add!")
+            document.getElementById("showCommentBtn").innerText = "已收藏！"
+            document.getElementById("showCommentBtn").style.background = "rgb(20, 57, 48)"
+          }
+
+        })
+    }else{
+      alert("請先登入!")
+    }
+  }
 
   return (
     <div >
@@ -196,7 +275,7 @@ function Detail() {
               </div>
               <div>
                 <button className="addCommentBtn" id="addCommentBtn" onClick={commentBlock}>新增評論</button>
-                <button className="showCommentBtn" id="showCommentBtn" >收藏關注<i className="fa-solid fa-heart"id="heart"></i></button>
+                <div className='setColl'><button className="showCommentBtn" id="showCommentBtn" onClick={collection} >收藏關注<i className="fa-solid fa-heart" id="heart"></i></button></div>
               </div>
             </div>
           </Row >

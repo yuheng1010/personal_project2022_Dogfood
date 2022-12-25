@@ -61,7 +61,7 @@ const addComment = async (userId,email,grade,content,pId,dogVar) => {
 }
 
 const getPersonCollection = async (userId) => {
-    const [result] = await pool.query('SELECT * FROM collection WHERE userId = ?', userId);
+    const [result] = await pool.query('SELECT * FROM collection AS a, allfoods2 AS b WHERE a.pId = b.id AND userId = ?', userId);
     return result;
 }
 
@@ -74,6 +74,14 @@ const deleteCollection = async (userId, pId) => {
     const [result] = await pool.query('DELETE FROM collection WHERE userId = ? AND pId = ?', [userId,pId]);
     return result;
 }
+
+const ifProductCollection = async (userId, pId) => {
+    const [result] = await pool.query("SELECT EXISTS (SELECT id FROM collection WHERE userId = ? AND pId = ? )AS Output", [userId, pId])
+    return result[0].Output
+}
+
+
+
 module.exports = {
     signUp,
     signIn,
@@ -81,5 +89,6 @@ module.exports = {
     addComment,
     getPersonCollection,
     addCollection,
-    deleteCollection
+    deleteCollection,
+    ifProductCollection,
 };

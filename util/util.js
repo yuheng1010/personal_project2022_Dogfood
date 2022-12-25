@@ -33,7 +33,7 @@ const authentication = () => {
         }
 
         try {
-            const user = await jwt.verify(accessToken, process.env.JWT);
+            const user = await promisify(jwt.verify)(accessToken, JWT);
             req.user = user;
            
                 let userDetail;
