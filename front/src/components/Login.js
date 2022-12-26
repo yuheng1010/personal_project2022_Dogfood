@@ -12,7 +12,7 @@ function signUp(){
     const dogAge = document.getElementById('dogAge').value
 
     var header = { 'Content-Type': 'application/json; charset=UTF-8' };
-    fetch('http://52.8.249.71:7000/api/v1/signUp', {
+    fetch('http://localhost:7000/api/v1/signUp', {
                 method: 'POST',
                 headers: header,
                 body: JSON.stringify({ 'userName':userName,'email': ac, 'password':pa,'phone':phone,'dogName':dogName,'dogAge':dogAge,'dogVar':dogVar})
@@ -33,7 +33,7 @@ function signIn(){
     console.log(ac)
     console.log(pa)
     var header = { 'Content-Type': 'application/json; charset=UTF-8' };
-    fetch('http://52.8.249.71:7000/api/v1/signIn', {
+    fetch('http://localhost:7000/api/v1/signIn', {
                     method: 'POST',
                     headers: header,
                     body: JSON.stringify({ 'email': ac, 'password':pa})
@@ -44,7 +44,7 @@ function signIn(){
                         console.log(result);
                         localStorage.setItem('token',result.token) 
                         alert(result.message)
-                        window.location.assign("http://52.8.249.71:3000")
+                        window.location.assign("http://localhost:3000")
                     });
 }
 

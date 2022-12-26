@@ -3,6 +3,7 @@ const pool = require('../../db');
 const getProducts = async()=>{
     const conn = await pool.getConnection();
     const [results] = await conn.query("SELECT * FROM allfoods2")
+    await conn.release();
     return results
 }
 

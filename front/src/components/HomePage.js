@@ -9,7 +9,7 @@ import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 function HomePage() {
     const [foods, setFood] = useState([])
     useEffect(() => {
-        fetch("http://52.8.249.71:7000/api/v1/allfoods")
+        fetch("http://localhost:7000/api/v1/allfoods")
             .then(res => res.json())
             .then(data => {
                 setFood(data)

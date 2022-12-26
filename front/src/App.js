@@ -16,7 +16,7 @@ function App() {
     document.getElementById("notFound").style.display = "none";
     if (localStorage.getItem('token') !== null && localStorage.getItem('token') !== 'undefined') {
       document.querySelector(".profile").style.display = "block";
-      fetch("http://52.8.249.71:7000/api/v1/userDetail", {
+      fetch("http://localhost:7000/api/v1/userDetail", {
         headers: new Headers({
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,

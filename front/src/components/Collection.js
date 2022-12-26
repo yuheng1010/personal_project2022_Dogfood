@@ -11,7 +11,7 @@ function Collection() {
     let token = window.localStorage.getItem('token');
     useEffect(() => {
         document.getElementById("notFound").style.display="none";
-        fetch("http://52.8.249.71:7000/api/v1/getPersonCollection", {
+        fetch("http://localhost:7000/api/v1/getPersonCollection", {
             headers: new Headers({
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,

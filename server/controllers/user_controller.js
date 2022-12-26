@@ -19,8 +19,7 @@ const signUp = async (req, res) => {
 const signIn = async (req, res)=>{
     const email = req.body.email;
     const password = req.body.password;
-    console.log(email)
-    console.log(password)
+
     res.send(await User.signIn(email,password)) 
 }
 

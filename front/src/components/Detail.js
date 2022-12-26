@@ -16,13 +16,13 @@ function Detail() {
   const [commentGrade, setCommentGrade] = React.useState([])
 
   useEffect(() => {
-    fetch(`http://52.8.249.71:7000/api/v1/detail?id=${id}`)
+    fetch(`http://localhost:7000/api/v1/detail?id=${id}`)
       .then(res => res.json())
       .then(data => {
         setData(data)
       })
 
-    fetch(`http://52.8.249.71:7000/api/v1/productComment?Id=${id}`)
+    fetch(`http://localhost:7000/api/v1/productComment?Id=${id}`)
       .then(res => res.json())
       .then(data => {
         setComments(data.result)
@@ -40,7 +40,7 @@ function Detail() {
 
     if (window.localStorage.getItem('token') && window.localStorage.getItem('token') != null) {
       let token = window.localStorage.getItem('token')
-      fetch('http://52.8.249.71:7000/api/v1/ifProductCollection', {
+      fetch('http://localhost:7000/api/v1/ifProductCollection', {
         body: JSON.stringify({ pId: id }),
         headers: new Headers({
           'Content-Type': 'application/json',
@@ -194,7 +194,7 @@ function Detail() {
     if (!content || grade === 0) {
       alert('請填寫完整評論')
     } else {
-      fetch('http://52.8.249.71:7000/api/v1/addComment', {
+      fetch('http://localhost:7000/api/v1/addComment', {
         body: JSON.stringify({ grade: grade, content: content, pId: id }),
         headers: new Headers({
           'Content-Type': 'application/json',
@@ -216,7 +216,7 @@ function Detail() {
     //先判斷是不是珍藏了
     if (window.localStorage.getItem('token') && window.localStorage.getItem('token') != null) {
       let token = window.localStorage.getItem('token')
-      fetch('http://52.8.249.71:7000/api/v1/ifProductCollection', {
+      fetch('http://localhost:7000/api/v1/ifProductCollection', {
         body: JSON.stringify({ pId: id }),
         headers: new Headers({
           'Content-Type': 'application/json',
@@ -228,7 +228,7 @@ function Detail() {
         .then(data => {
           console.log(data)
           if (data === 1) {
-            fetch('http://52.8.249.71:7000/api/v1/deleteCollection', {
+            fetch('http://localhost:7000/api/v1/deleteCollection', {
               body: JSON.stringify({ pId: id }),
               headers: new Headers({
                 'Content-Type': 'application/json',
@@ -240,7 +240,7 @@ function Detail() {
             document.getElementById("showCommentBtn").innerHTML = "收藏關注<i className=\"fa-solid fa-heart\" id=\"heart\"></i>"
             document.getElementById("showCommentBtn").style.background = "rgb(87, 131, 119)"
           } else {
-            fetch('http://52.8.249.71:7000/api/v1/addCollection', {
+            fetch('http://localhost:7000/api/v1/addCollection', {
               body: JSON.stringify({ pId: id }),
               headers: new Headers({
                 'Content-Type': 'application/json',
