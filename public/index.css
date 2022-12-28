@@ -1,0 +1,17 @@
+*{
+    margin: 0%;
+}
+header{
+    background-color: rgb(111, 168, 152);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.webIcon{
+    margin-left: 17px;
+ 
+    height: 65px;
+    width: 65px;
+}

@@ -1,0 +1,339 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url(//db.onlinewebfonts.com/c/3033ee1d3b6ca00d2765082ade4fed4f?family=Denk+One);
+/* *{
+    font-family: 'Noto Sans TC',sans-serif;
+} */
+
+.detailsAll {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    text-align: start;
+
+    margin-top: -50px;
+}
+
+img.dpic {
+    width: 350px;
+    padding: 5px;
+    border-radius: 20px;
+
+}
+
+img.pics {
+    width: 350px;
+    padding: 5px;
+    border-radius: 20px;
+
+}
+
+.detail {
+    width: 350px;
+    margin-top: 20px;
+    margin-left: 15px;
+
+}
+
+.pID {
+    font-family: 'Denk One', woff2;
+}
+
+.pBrand {
+    font-family: 'Denk One', woff2;
+
+}
+/* .commentArea {
+    border: 1px solid #979797;
+    width: 57%;
+    position: relative;
+    box-shadow: 0 0 2px 2px#979797 inset;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: auto;
+    padding: 30px;
+}
+
+.commentArea::before {
+    background-color: #fff;
+    color: #000000;
+    content: "評論區";
+    /*標題*/
+    /* font-weight: bold;
+    font-size: 15px;
+    left: 1em;
+    padding: 0 .5em;
+    position: absolute;
+    top: -1em;
+}  */
+.brandUrl {
+    font-family: 'Denk One', woff2;
+    color: rgb(87, 131, 119);
+    text-decoration: none;
+}
+.brandUrl:hover {
+    font-family: 'Denk One', woff2;
+    color: rgb(58, 137, 156);
+}
+.compareArea {
+    border: 1px solid rgb(87, 131, 119);
+    height: auto;
+    position: relative;
+    box-shadow: 0 0 1px 1px rgba(111, 168, 152, 0.562) inset;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: auto;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.compareArea::before {
+    background-color: #fff;
+    color: rgb(87, 131, 119);
+    content: "比價/購買專區";
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 10px;
+    left: 0.5em;
+    padding: 0.5em;
+    position: absolute;
+    top: -1.8em;
+}
+.afoot{
+    width:15px;
+    height: 13px;
+    margin-right: 10px;
+    margin-top: -2px;
+}
+.addCommentBtn{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 45px;
+    border: none;
+    background-color:rgb(87, 131, 119);
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: white;
+    cursor: pointer;
+  }
+  .showCommentBtn{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: none;
+    background-color:rgb(87, 131, 119);
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: white;
+    cursor: pointer;
+  }
+
+  dialog{
+    border: none;
+    width:380px;
+    height:400px;
+    box-shadow: 0 2px 6px #ccc;
+    border-radius: 17px;
+    overflow: hidden;
+  }
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .zi_box_1 {
+    border: 1px solid #979797;
+    padding: 15px;
+    width: 80%;
+    margin-left: 5%;
+    position: relative;
+    box-shadow: 0 0 2px 2px#979797 inset;
+    border-radius: 6px;
+    display: flex;
+    justify-content:center ;
+    }
+    .zi_box_1::before {
+    background-color: #fff;
+    color: #000000;
+    content: "評分";/*標題*/
+    font-weight: bold;
+    font-size: 12px;
+    left: 1em;
+    padding: 0 .5em;
+    position: absolute;
+    top: -1em;
+    }
+    .zi_box_2 {
+      border: 1px solid #979797;
+      padding: 15px;
+      width: 80%;
+      margin-left: 5%;
+      position: relative;
+      box-shadow: 0 0 2px 2px#979797 inset;
+      border-radius: 6px;
+      display: flex;
+      justify-content:center ;
+      }
+      .zi_box_2::before {
+      background-color: #fff;
+      color: #000000;
+      content: "評論";/*標題*/
+      font-weight: bold;
+      font-size: 12px;
+      left: 1em;
+      padding: 0 .5em;
+      position: absolute;
+      top: -1em;
+      }
+  .form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left:11%;
+    justify-content: center;
+    border: #8b572a;
+    border-width: 10px;
+  }
+  .form__title{
+    font-size: 20px;
+    margin-left: 28%;
+    margin-bottom: 20px;
+    color:   #3f3a3a;
+  }
+  
+  .form__field {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .form__field-name {
+    width: 80px;
+    line-height: 19px;
+    /* margin-left: 10%; */
+    font-size: 20px;
+    color: #3f3a3a;
+  }
+  
+  .form__field-input {
+    width: 400px;
+    height:150px;
+    border-radius: 10px;
+    border: none;
+    /* margin-left: 3%; */
+    font-size: 12px;
+  }
+  .fa-solid {
+    padding: 7px;
+    border-color: chocolate;
+    color: chocolate;
+
+  }
+  .fa-regular{
+    padding: 7px;
+    border-color: chocolate;
+    color: chocolate;
+  }
+  .submitCommentBtn{
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+    border: solid 1px rgb(87, 131, 119);
+    background-color: rgb(87, 131, 119);
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 30%;
+  }
+  .commentArea{
+    border: 1px solid #979797;
+    width: 55%;
+    position: relative;
+    box-shadow: 0 0 2px 2px#979797 inset;
+    border-radius: 6px;
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: column;
+    margin: auto ;
+    margin-top: 80px;
+    /* padding: 65px 0 164px; */
+    padding: 30px;
+    
+  }
+  .commentArea::before {
+    background-color: #fff;
+    color: #000000;
+    content: "評論區";/*標題*/
+    font-weight: bold;
+    font-size: 15px;
+    left: 1em;
+    padding: 0 .5em;
+    position: absolute;
+    top: -1em;
+   
+  }
+  .comment{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: start;
+    width:80%;
+    font-size: 13px;
+   
+  }
+  .comment:not(:last-child){
+    margin-bottom: 25px;
+  }
+  .profileback{
+    margin-right: 10px;
+    width:80px;
+    height:80px;
+    background-color:  rgb(87, 131, 119);
+    border-radius: 5px;
+  }
+  .commentPic{
+    padding-left: 8px;
+    margin-top: 8px;
+    width:72px;
+    height: 70px;
+  }
+  .comment .fa-solid {
+    padding: 3px;
+  
+  }
+  .commentgrade{
+    color: #979797;
+    font-size: 8px;
+  }
+  #close{
+    background-color: white;
+    font-size: larger;
+    border: none;
+    margin-left: -95%;
+  }
+  #rating-value{
+    margin-left: 100px;
+    color: #979797;
+    font-size: 10px;
+  }
+
+  .gomy{
+    position: absolute;
+    right: 30px;
+    padding-top: 2px;
+  }
+
+  #heart{
+    color: rgb(172, 250, 248);
+  }
+@media (max-width: 1280px) {}
